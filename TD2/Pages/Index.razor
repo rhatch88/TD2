@@ -1,0 +1,56 @@
+﻿@page "/"
+@using TD2.Models
+@using Microsoft.AspNetCore.Components.Forms
+
+<h3>Add a new event</h3>
+
+<EditForm Model="NewEvent" OnValidSubmit="SubmitForm">
+    @*Copilot thinks this form is better than mine. COME BACK AND LOOK LATER
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <InputText id="name" @bind-Value="NewEvent.Name" />
+    <InputText id="age" @bind-Value="NewEvent.Age" />
+    <InputText id="price" @bind-Value="NewEvent.Price" />
+    <InputCheckbox id="indoor" @bind-Value="NewEvent.Indoor" />
+    <button type="submit">Submit</button>
+    <a href="#"></a>*@
+
+    <label>Name</label>
+    <InputText id="name" @bind-Value="NewEvent.Name" />
+
+    <br />
+    <br />
+
+    <label>Age</label>
+    <InputText id="Age" @bind-Value="NewEvent.Age" />   
+
+    <br />
+    <br />
+
+    <label>Price</label>
+    <InputText id="Price" @bind-Value="NewEvent.Price" />
+
+    <br />
+    <br />
+
+    <label>Indoor/Outdoor</label>
+    <InputCheckbox id="Indoor" @bind-Value="NewEvent.Indoor" /> 
+
+    <br />
+    <br />
+
+    <button type="submit">Submit</button>
+
+</EditForm>
+
+@inject Data.AppDbContext dbContext
+@code {
+    public TD2Event NewEvent = new TD2Event();
+    
+    private async void SubmitForm()
+    {
+        dbContext.TD2Events.Add(NewEvent);
+        await dbContext.SaveChangesAsync();
+    }
+
+}
