@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Shared\" />
+    <Folder Include="Pages\" />
+  </ItemGroup>
+
 </Project>
